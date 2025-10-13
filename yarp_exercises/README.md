@@ -183,14 +183,63 @@ HAbría que crear una función que despachase los mensajes según la etiqueta de
 
 **¿Cuál es la diferencia entre Network::connect y Port::addOutput?**
 
-El propósito de Network::connect tiene un alcance más global (manejando las conexiones globales entre todos los puertos de un sistema), mientras que Port::addOutput se utiliza en un ámbito del propio puerto emisor con el receptor. Esto permite realizar conexiones locales de manera más sencilla.
+Network::connect tiene un alcance más global (manejando las conexiones globales entre todos los puertos de un sistema), mientras que Port::addOutput se utiliza en un ámbito del propio puerto emisor con el receptor. Esto permite realizar conexiones locales de manera más sencilla.
 
 
-**¿Como cambiarías los "cout" por mensajes de logging?**
+**¿Cómo cambiarías los `cout` por mensajes de logging?**
+
+En lugar de utilizar `std::cout` para mostrar mensajes en consola, se puede emplear una biblioteca de logging como `spdlog`. Esto permite configurar niveles de severidad, definir archivos de salida y añadir formato y timestamp automáticamente.
+
+Ejemplo:
+
+```cpp
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/basic_file_sink.h>
+
+// Inicializa el logger para escribir en logs.txt
+auto logger = spdlog::basic_logger_mt("file_logger", "logs.txt");
+spdlog::set_default_logger(logger);
+
+// Reemplaza cout por log info
+spdlog::info("Puerto abierto correctamente");
+```
+
+De esta forma, los mensajes se gestionan de manera más profesional y flexible que con `cout`.
 
 
 # Ejercicio 3: BufferedPort en YARP
 
+**Descripción del programa anterior**
+
+El código muestra cómo establecer comunicación entre dos puertos en YARP usando BufferedPort para enviar y recibir mensajes tipo Bottle. Se crea un puerto de envío y otro de recepción, se conectan, se envía un mensaje y se recibe en el otro extremo. El uso de BufferedPort permite el intercambio de mensajes en "segundo plano" de manera que los hilos que producen o consumen no tienen que detenerse necesariamente a enviar/recibir cada mensaje, lo que facilita una comunicación asíncrona y confiable.
+
+**Enumera los mas característico**
+
+- Creación de puertos de tipo BufferedPort<Bottle>.
+- Apertura de puertos con nombres únicos.
+- Conexión directa entre puertos usando Network::connect.
+- Preparación y envío de un mensaje tipo Bottle.
+- Lectura y visualización del mensaje recibido.
+
+# Ejercicio 3.1: BufferedPort en Comunicación Simultánea
+
+Instrucciones:
+1. Crea un programa en el que haya dos BufferedPort que actuen como productores (producer1 y producer2).
+2. Ambos productores deben enviar mensajes periodicos al mismo puerto consumidor (consumer).
+3. El puerto consumidor debe recibir y mostrar todos los mensajes enviados por los productores.
+
+**Descripcion del proceso** 
+
+Creación dos productores (productor1 y productor2) y un consumidor usando `BufferedPort` en YARP. 
+Cada productor envía mensajes de manera periódica (productor1 cada 1s y productor2 cada 2s) al mismo puerto consumidor, que recibe y muestra todos los mensajes. 
+El proceso demuestra cómo varios nodos pueden enviar datos simultáneamente a un único receptor, gestionando la concurrencia y evitando la pérdida de mensajes gracias al buffer interno de `BufferedPort`.
+
+**Describe el codigo clave**
+
+- Se crean dos puertos productores (`producer1`, `producer2`) y un puerto consumidor (`consumer`) de tipo `BufferedPort<Bottle>`.
+- Los productores se conectan al consumidor usando `Network::connect`.
+- Cada productor envía mensajes en intervalos distintos (1s y 2s) en bucle usando `prepare()` y `write()`.
+- El consumidor lee los mensajes de forma no bloqueante con `read(false)` y los muestra por consola.
 
 # Ejercicio 4: Tiempo real en YARP
 
