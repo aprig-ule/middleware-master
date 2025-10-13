@@ -243,6 +243,22 @@ El proceso demuestra cómo varios nodos pueden enviar datos simultáneamente a u
 
 # Ejercicio 4: Tiempo real en YARP
 
+Describe con tus palabras lo que consideres más relevante de los siguientes puntos:
+
+- **Puerto del emisor (/sender):**  
+    Puerto encargado de enviar mensajes de manera periódica. En el ejemplo, se utiliza un `BufferedPort<Bottle>` llamado `/sender` que genera y transmite datos a intervalos de 200ms.
+
+- **Puerto del receptor (/receiver):**  
+    Es el puerto que recibe los mensajes enviados por el sender. Se implementa como un `BufferedPort<Bottle>` llamado `/receiver`, encargado de leer y procesar los datos conforme llegan, permitiendo observar el comportamiento en tiempo real.
+
+- **Frecuencia de envío:**  
+    La frecuencia determina cada cuánto tiempo el emisor genera y envía mensajes al receptor. 
+
+- **Ventajas y desventajas de setStrict():**  
+    El método `setStrict()` en `BufferedPort` fuerza al puerto receptor a procesar todos los mensajes recibidos, sin descartar ninguno, haciendo que todos los mensajes sean procesados en orden de llegada, haciendo que el puerto receptor reciba los mensajes y los maneje como una cola FIFO (First In First Out).
+    - *Ventajas:* Garantiza que no se pierda información, útil en aplicaciones donde cada mensaje es crítico (por ejemplo, adquisición de datos científicos).  
+    - *Desventajas:* Si el receptor no puede procesar los mensajes a la misma velocidad que el emisor los envía, el buffer puede crecer y consumir mucha memoria, lo que puede afectar el rendimiento o provocar bloqueos si no se gestiona adecuadamente.
+
 
 # Ejercicio 5: Multihilo en YARP
 
