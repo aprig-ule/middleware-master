@@ -134,8 +134,66 @@ ros2 topic echo /chatter
 ```
 
 
-### 1.6 Pub/Sub with QoS
 
+### 1.6 Pub/Sub with QoS
+En este ejercicio se implementa un único nodo que actúa como publicador y suscriptor, cada uno con un perfil de Calidad de Servicio (QoS) diferente:
+
+- **Publicador**: Publica mensajes en el tópico `durable_topic` usando un perfil QoS confiable y duradero (`RELIABLE`, `TRANSIENT_LOCAL`), que asegura que los mensajes se almacenen y puedan ser recibidos por suscriptores que se conecten más tarde.
+
+- **Suscriptor**: Se suscribe al tópico `volatile_topic` usando un perfil QoS de mejor esfuerzo y volátil (`BEST_EFFORT`, `VOLATILE`), lo que prioriza la inmediatez sobre la fiabilidad y no almacena mensajes.
+
+```python
+class PubSubNode(Node):
+	def __init__(self):
+		super().__init__('pub_sub_node')
+
+		pub_qos = QoSProfile(
+			reliability=ReliabilityPolicy.RELIABLE,
+			durability=DurabilityPolicy.TRANSIENT_LOCAL,
+			depth=10
+		)
+		self.publisher_ = self.create_publisher(String, 'durable_topic', pub_qos)
+
+		sub_qos = QoSProfile(
+			reliability=ReliabilityPolicy.BEST_EFFORT,
+			durability=DurabilityPolicy.VOLATILE,
+			depth=10
+		)
+		self.subscription = self.create_subscription(
+			String,
+			'volatile_topic',
+			self.listener_callback,
+			sub_qos
+		)
+
+		self.timer = self.create_timer(2.0, self.publish_message)
+
+		self.get_logger().info('PubSubNode está funcionando.')
+
+	def publish_message(self):
+		msg = String()
+		msg.data = 'Mensaje desde durable_topic'
+		self.publisher_.publish(msg)
+		self.get_logger().info(f'Publicado en durable_topic: "{msg.data}"')
+
+	def listener_callback(self, msg):
+		self.get_logger().info(f'Recibido en volatile_topic: "{msg.data}"')
+```
+
+El método `publish_message` publica periódicamente en el tópico `durable_topic`, mientras que `listener_callback` procesa los mensajes recibidos en `volatile_topic`.
+
+```python
+def main(args=None):
+	rclpy.init(args=args)
+	node = PubSubNode()
+	try:
+		rclpy.spin(node)
+	except KeyboardInterrupt:
+		pass
+	finally:
+		node.destroy_node()
+		rclpy.shutdown()
+```
 
 ### 1.8 Publisher/Subscriber with queues
 
