@@ -1,0 +1,4 @@
+[console_scripts]
+multi_thread_executor = py_pubsub.multi_thread_executor:main
+publisher_member_function = py_pubsub.publisher_member_function:main
+subscriber_member_function = py_pubsub.subscriber_member_function:main

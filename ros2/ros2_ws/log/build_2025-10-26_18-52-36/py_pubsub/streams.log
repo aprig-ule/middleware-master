@@ -1,0 +1,42 @@
+[1.032s] Invoking command in '/home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/py_pubsub': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/py_pubsub build --build-base /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build install --record /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/install.log --single-version-externally-managed install_data
+[1.401s] running egg_info
+[1.401s] creating ../build/py_pubsub/py_pubsub.egg-info
+[1.427s] writing ../build/py_pubsub/py_pubsub.egg-info/PKG-INFO
+[1.427s] writing dependency_links to ../build/py_pubsub/py_pubsub.egg-info/dependency_links.txt
+[1.427s] writing entry points to ../build/py_pubsub/py_pubsub.egg-info/entry_points.txt
+[1.428s] writing requirements to ../build/py_pubsub/py_pubsub.egg-info/requires.txt
+[1.428s] writing top-level names to ../build/py_pubsub/py_pubsub.egg-info/top_level.txt
+[1.428s] writing manifest file '../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'
+[1.480s] reading manifest file '../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'
+[1.481s] writing manifest file '../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'
+[1.481s] running build
+[1.481s] running build_py
+[1.481s] creating /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build
+[1.481s] creating /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build/lib
+[1.482s] creating /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build/lib/py_pubsub
+[1.482s] copying py_pubsub/subscriber_member_function.py -> /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build/lib/py_pubsub
+[1.482s] copying py_pubsub/__init__.py -> /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build/lib/py_pubsub
+[1.482s] copying py_pubsub/publisher_member_function.py -> /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build/lib/py_pubsub
+[1.482s] running install
+[1.488s] running install_lib
+[1.511s] creating /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub
+[1.511s] copying /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build/lib/py_pubsub/subscriber_member_function.py -> /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub
+[1.511s] copying /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build/lib/py_pubsub/__init__.py -> /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub
+[1.511s] copying /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build/lib/py_pubsub/publisher_member_function.py -> /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub
+[1.511s] byte-compiling /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub/subscriber_member_function.py to subscriber_member_function.cpython-312.pyc
+[1.512s] byte-compiling /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub/__init__.py to __init__.cpython-312.pyc
+[1.512s] byte-compiling /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub/publisher_member_function.py to publisher_member_function.cpython-312.pyc
+[1.513s] running install_data
+[1.513s] creating /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/share/ament_index
+[1.513s] creating /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/share/ament_index/resource_index
+[1.513s] creating /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/share/ament_index/resource_index/packages
+[1.513s] copying resource/py_pubsub -> /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/share/ament_index/resource_index/packages
+[1.514s] copying package.xml -> /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/share/py_pubsub
+[1.514s] running install_egg_info
+[1.542s] Copying ../build/py_pubsub/py_pubsub.egg-info to /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub-0.0.0-py3.12.egg-info
+[1.543s] running install_scripts
+[1.701s] Installing multi_thread_executor script to /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/py_pubsub
+[1.701s] Installing publisher_member_function script to /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/py_pubsub
+[1.701s] Installing subscriber_member_function script to /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/py_pubsub
+[1.701s] writing list of installed files to '/home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/install.log'
+[1.736s] Invoked command in '/home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/py_pubsub' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/install/py_pubsub/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/py_pubsub build --build-base /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/build install --record /home/aprig/Proyectos_Máster/middleware-master/ros2/ros2_ws/build/py_pubsub/install.log --single-version-externally-managed install_data
