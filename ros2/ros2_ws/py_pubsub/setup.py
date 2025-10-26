@@ -27,6 +27,7 @@ setup(
             'publisher_member_function = py_pubsub.publisher_member_function:main',
             'subscriber_member_function = py_pubsub.subscriber_member_function:main',
             'multi_thread_executor = py_pubsub.multi_thread_executor:main',
+            'qos_pubsub = py_pubsub.qos_pubsub:main',
         ],
     },
 )
