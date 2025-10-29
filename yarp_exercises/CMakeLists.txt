@@ -10,3 +10,5 @@ target_link_libraries(real_time_sender ${YARP_LIBRARIES})
 add_executable(real_time_receiver ejercicio4_real_time_receiver.cpp)
 target_link_libraries(real_time_receiver ${YARP_LIBRARIES})
 
+add_executable(multithread ejercicio5_1_thread.cpp)
+target_link_libraries(multithread ${YARP_LIBRARIES})

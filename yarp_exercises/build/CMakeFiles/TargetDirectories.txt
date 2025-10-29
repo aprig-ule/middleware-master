@@ -1,0 +1,5 @@
+/home/aprig/Proyectos_Máster/middleware-master/yarp_exercises/build/CMakeFiles/real_time_sender.dir
+/home/aprig/Proyectos_Máster/middleware-master/yarp_exercises/build/CMakeFiles/real_time_receiver.dir
+/home/aprig/Proyectos_Máster/middleware-master/yarp_exercises/build/CMakeFiles/multithread.dir
+/home/aprig/Proyectos_Máster/middleware-master/yarp_exercises/build/CMakeFiles/edit_cache.dir
+/home/aprig/Proyectos_Máster/middleware-master/yarp_exercises/build/CMakeFiles/rebuild_cache.dir

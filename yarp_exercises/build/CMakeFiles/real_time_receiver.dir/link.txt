@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/real_time_receiver.dir/ejercicio4_real_time_receiver.cpp.o -o real_time_receiver  -Wl,-rpath,/usr/local/lib /usr/local/lib/libYARP_init.so.3.12.1 /usr/local/lib/libYARP_dev.so.3.12.1 /usr/local/lib/libYARP_math.so.3.12.1 /usr/local/lib/libYARP_sig.so.3.12.1 /usr/local/lib/libYARP_os.so.3.12.1 

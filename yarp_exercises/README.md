@@ -1,3 +1,26 @@
+# Importate: Compilación/ejecución archivos .cpp
+
+Es importante que el CMakeLists.txt tenga una forma parecida a esta.
+```
+cmake_minimum_required(VERSION 3.5)
+project(yarp_exercises)
+
+find_package(YARP REQUIRED)
+include_directories(${YARP_INCLUDE_DIRS})
+
+add_executable(ejercicio-compilado ejercicio.cpp)
+target_link_libraries(multithread ${YARP_LIBRARIES})
+```
+
+Tras esto lanzamos los siguientes comandos:
+```bash
+mkdir build
+cd build
+cmake ..
+make
+./ejercicio-compilado
+```
+
 # Ejercicio 1 YARP: Comandos Básicos de YARP en la línea de comandos
 
 
@@ -262,7 +285,67 @@ Describe con tus palabras lo que consideres más relevante de los siguientes pun
 
 # Ejercicio 5: Multihilo en YARP
 
+YARP facilita la comunicación entre hilos en Python mediante puertos (`Port`, `BufferedPort`) y mecanismos de buffering, permitiendo que productores y consumidores trabajen en hilos separados sin bloquearse entre sí. Usar `BufferedPort` desacopla la velocidad de envío y recepción, y el método `setStrict()` asegura el procesamiento ordenado de todos los mensajes (FIFO).
+
+**Flujo principal:**
+- Creación y apretura de puertos en el hilo principal.
+- EL hilo sender envía los datos con `prepare()` y `write()`.
+- El hilo receiver recibe mensajes con `read()`.
+
+
+**Ejemplo de uso en `ejercicio5_1_thread.cpp`:**
+
+VErsión resumida del código:
+
+```cpp
+class SenderThread : public Thread {
+    // Abre un puerto de salida y envía mensajes periódicamente
+    void run() override {
+        while (!isStopping()) {
+            Bottle& msg = portOut.prepare();
+            msg.clear();
+            msg.addString("Message #" + std::to_string(counter++));
+            portOut.write();
+            yarp::os::Time::delay(2.0);
+        }
+    }
+};
+
+class ReceiverThread : public Thread {
+    // Abre un puerto de entrada y recibe mensajes de forma no bloqueante
+    void run() override {
+        while (!isStopping()) {
+            Bottle* msg = portIn.read(false);
+            if (msg != nullptr) {
+                cout << "[Receiver] Received: " << msg->toString() << endl;
+            }
+            yarp::os::Time::delay(2);
+        }
+    }
+};
+
+int main() {
+    Network yarp;
+    SenderThread sender;
+    ReceiverThread receiver;
+    sender.start();
+    receiver.start();
+    yarp.connect("/sender/out", "/receiver/in");
+    // Espera a que el usuario pulse ENTER y detiene los hilos
+}
+```
+
+**Explicación:**
+- Se definen dos hilos: uno para enviar mensajes periódicamente (`SenderThread`) y otro para recibirlos (`ReceiverThread`), cada uno con su propio puerto YARP.
+- El hilo emisor prepara y envía mensajes numerados cada 2 segundos.
+- El hilo receptor lee mensajes de forma no bloqueante y los muestra por consola.
+- En `main`, se inicializa la red YARP, se lanzan ambos hilos y se conectan los puertos. El programa espera a que el usuario pulse ENTER para detener los hilos y finalizar.
+
+
+Este ejemplo muestra cómo un hilo productor y uno consumidor comparten un `BufferedPortBottle`, logrando comunicación segura, eficiente y desacoplada.
+
 
 # Ejercicio 6: Relación entre YARP, ROS y ROS2
 
+*POR AHORA NO HAY QUE HACERLO*
 
